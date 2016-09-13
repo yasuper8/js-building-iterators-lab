@@ -17,6 +17,18 @@ var numArray = [0,1,10,100,1000];
 //   console.log('inside myEach', element, index, arr);
 // });
 
+function print(element, index, arr){
+	console.log(element, index, arr);
+}
+
+function myEach(arr, callback){
+	for(var i = 0; i < arr.length; i++){
+		callback(arr[i],i,arr);
+	}
+}
+
+myEach(numArray, print);
+
 
 
 
@@ -29,5 +41,37 @@ var numArray = [0,1,10,100,1000];
 // console.log('Testing myMap')
 // console.log(output === ["A", "B", "C"]) // assertion
 
+function capitalize(v){
+	return v.toUpperCase();
+}
+ 
+function myMap(arr, callback){
+	var output = [];
+	for(var i = 0; i < arr.length; i++){
+		output.push(callback(arr[i],i, arr));
+	}
+	return output;
+}
+
+// myMap(numArray, capitalize);
+
+/*my reduce*/
+
+function addTwoNums(a,b){
+	return a + b;
+}
+
+
+function myReduce(arr, callback){
+var result = arr[i];
+	for(var i = 0; i < arr.length; i++){
+		callback(result,arr[i],i,arr);
+	}
+	return; 
+}
+
+var reduceResult = myReduce(numArray, addTwoNums);
+
+print(reduceResult);
 
 console.log("the end");
